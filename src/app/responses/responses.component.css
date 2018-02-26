@@ -1,0 +1,23 @@
+#tabletitle{
+    text-align: center;
+    
+}
+
+table{
+    width:80%;
+    margin: auto;
+}
+
+table th {
+   
+    /* padding-top: 12px;
+    padding-bottom: 12px; */
+    text-align: center;
+    background-color: 	#6196da;
+    /* color: white;
+    padding: 10px; */
+}
+
+tr td{
+    font-size: 14px;
+}

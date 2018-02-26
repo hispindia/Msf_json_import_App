@@ -1,0 +1,61 @@
+
+  <table class="table table-bordered table-hover table-striped">
+    <tr>
+      <th>Id (File)</th>
+      <th>Id (System)</th>
+      <th>Status</th>
+      <th>Summary</th>
+      <th>Conflict/Description</th>
+    </tr>
+    <tr>
+      <th id="tabletitle" colspan="5">TrackedEntityInstances</th>
+    </tr>
+    <tr *ngFor="let a of teiResponses">
+      <td>{{a.id}}</td>
+      <td>{{a.systemid}}</td>
+      <td>{{a.status}}</td>
+      <td>{{a.summary}}</td>
+      <td>{{a.conflict}}</td>
+    </tr>
+    <tr>
+      <td>Summary :</td>
+      <td>Succeeded Insertions : {{teiSum[0]}} </td>
+      <td>Failed Insertions    : {{teiSum[1]}}</td>
+      <td>Succeeded Updates    : {{teiSum[2]}}</td>
+      <td>Failed Updates       : {{teiSum[3]}}</td>
+    </tr>
+    <tr>
+      <th id="tabletitle" colspan="5">Enrollments</th>
+    </tr>
+    <tr *ngFor="let a of enrollmentResponses">
+      <td>{{a.id}}</td>
+      <td>{{a.systemid}}</td>
+      <td>{{a.status}}</td>
+      <td>{{a.summary}}</td>
+      <td>{{a.conflict}}</td>
+    </tr>
+    <tr>
+      <td>Summary :</td>
+      <td colspan="2">Succeeded Insertions : {{enrSum[0]}} </td>
+      <td colspan="2">Failed Insertions    : {{enrSum[1]}}</td>
+      
+    </tr>
+    <tr>
+      <th id="tabletitle" colspan="5">Events</th>
+    </tr>
+    <tr *ngFor="let a of eventsResponses">
+      <td>{{a.id}}</td>
+      <td>{{a.systemid}}</td>
+      <td>{{a.status}}</td>
+      <td>{{a.summary}}</td>
+      <td>{{a.conflict}}</td>
+    </tr>
+    <tr>
+      <td>Summary :</td>
+      <td>Succeeded Insertions : {{eventSum[0]}} </td>
+      <td>Failed Insertions    : {{eventSum[1]}}</td>
+      <td>Succeeded Updates    : {{eventSum[2]}}</td>
+      <td>Failed Updates       : {{eventSum[3]}}</td>
+    </tr>
+  </table>
+

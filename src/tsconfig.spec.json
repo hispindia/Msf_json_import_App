@@ -4,6 +4,7 @@
     "outDir": "../out-tsc/spec",
     "baseUrl": "./",
     "module": "commonjs",
+    "experimentalDecorators": false,
     "types": [
       "jasmine",
       "node"
