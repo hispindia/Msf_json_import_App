@@ -38,6 +38,9 @@ export class TEI{
     }
 
     static fromJSON(json:TEIInt|string):TEI{
+        if(json==null || json ==""){
+            return null;
+        }
         if(typeof json ==='string'){
             return JSON.parse(json,TEI.reviver);
         }else{
@@ -48,7 +51,7 @@ export class TEI{
             let attributes:Attribute[] = [];
             for(let atr of tei.attributes){
                 atr = Attribute.fromJSON(atr);
-                attributes.push(atr);
+                if(atr!=null)attributes.push(atr);
             }
             obj.attributes = attributes;
             return obj;

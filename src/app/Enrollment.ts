@@ -119,6 +119,7 @@ export class Enrollment{
     // }
 
     static fromJSON(json:EnrollmentInt|string):Enrollment{
+        if(json==null || json=="") return null;
         if(typeof json === 'string'){
             return JSON.parse(json,Enrollment.reviver);
         }else{

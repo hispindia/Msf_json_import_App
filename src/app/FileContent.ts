@@ -40,19 +40,19 @@ export class FileContent{
             let enrollments:Enrollment[] =[];
             for(let enIn of obj.enrollments){
                 enIn = Enrollment.fromJSON(enIn);
-                enrollments.push(enIn);
+                if(enIn!=null)enrollments.push(enIn);
             }
 
             let trackedEntityInstances:TEI[] = [];
             for(let tei of obj.trackedEntityInstances){
                 tei = TEI.fromJSON(tei);
-                trackedEntityInstances.push(tei);
+                if(tei!=null)trackedEntityInstances.push(tei);
             }
 
             let events:Event[] = [];
             for(let evnt of obj.events){
                 evnt = Event.fromJSON(evnt);
-                events.push(evnt);
+                if(evnt!=null)events.push(evnt);
             }
             obj.enrollments = enrollments;
             obj.trackedEntityInstances = trackedEntityInstances;

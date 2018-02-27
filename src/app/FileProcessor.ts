@@ -8,6 +8,7 @@ import { FileContentInt, FileContent } from "./FileContent";
 import {TEI} from "./TEI"
 import { ResponseService } from "./response-service.service";
 import {Event} from "./Event"
+import { resolve } from "url";
 
 
 export class FileProcessor{
@@ -19,6 +20,7 @@ export class FileProcessor{
     contentReceived(content){
         //console.log(content);
         //console.log(fileContent);
+        document.getElementById('loader').style.display = "block";
         let obj:FileContentInt = JSON.parse(content);
         let obj2:FileContent = FileContent.fromJSON(content);
         //console.log(obj);
@@ -39,11 +41,11 @@ export class FileProcessor{
             console.log("here x : ");
             this.updateEnrollments(obj2).then(()=>{
                 let  a = FileProcessor.mapEventsToTei(obj2.events);
-                console.log(a);
+                //console.log(a);
                 console.log("enrollements done");
-                for(let s of Object.keys(a)){
-                    Event.findAndUpdateOrInstallEventsofTEI(s,a[s],this.ser);
-                }
+                this.updateEvents(a).then(()=>{
+                    document.getElementById('loader').style.display = "none";
+                });
             });
                 
         });
@@ -84,6 +86,18 @@ export class FileProcessor{
             
 
         });
+        return ret;
+    }
+
+    updateEvents(a){
+        var ret = new Promise((resolve)=>{
+            var promises = [];
+            for(let s of Object.keys(a)){
+                promises.push(Event.findAndUpdateOrInstallEventsofTEI(s,a[s],this.ser));
+            }
+            Promise.all(promises).then(resolve);
+        });
+
         return ret;
     }
 

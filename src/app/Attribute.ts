@@ -38,6 +38,9 @@ export class Attribute{
     }
 
     static fromJSON(json:AttributeInt|string):Attribute{
+        if(json==null && json==""){
+            return null;
+        }
         if(typeof json==='string'){
             return JSON.parse(json,Attribute.reviver);
         }else{
